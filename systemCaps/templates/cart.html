@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.1/css/boxicons.min.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .cart-header h1 {
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-details h3 {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .cart-item-details p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .cart-item-quantity input {
+            width: 60px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .cart-summary {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .cart-summary h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+
+        .checkout-btn {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #007BFF;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background-color: #007BFF;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Cart Header -->
+        <div class="cart-header">
+            <h1>Your Cart</h1>
+        </div>
+
+        <!-- Cart Items -->
+        <div class="cart-items">
+            {% if cart_items %}
+            {% for item in cart_items %}
+            <div class="cart-item">
+                <img src="{{ url_for('static', filename='images/' + item.image_url) }}" alt="{{ item.product_name }}">
+                <div class="cart-item-details">
+                    <h3>{{ item.product_name }}</h3>
+                    <p><strong>Price:</strong> ${{ item.price }}</p>
+                </div>
+                <div class="cart-item-quantity">
+                    <form action="{{ url_for('update_cart') }}" method="POST">
+                        <input type="number" name="quantity" value="{{ item.quantity }}" min="1" required>
+                        <button type="submit">Update</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>Your cart is empty!</p>
+            {% endif %}
+        </div>
+
+        <!-- Order Summary -->
+        <div class="cart-summary">
+            <h3>Order Summary</h3>
+            <div class="summary-item">
+                <span>Subtotal</span>
+                <span>${{ total }}</span>
+            </div>
+            <div class="summary-item">
+                <span>Tax (5%)</span>
+                <span>${{ total * 0.05 }}</span>
+            </div>
+            <div class="summary-item">
+                <span>Total</span>
+                <span>${{ total + (total * 0.05) }}</span>
+            </div>
+        </div>
+
+        <!-- Checkout Button -->
+        <form action="{{ url_for('checkout') }}" method="POST">
+            <button type="submit" class="checkout-btn">Proceed to Checkout</button>
+        </form>
+    </div>
+
+</body>
+</html>

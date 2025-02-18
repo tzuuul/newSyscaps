@@ -1,0 +1,177 @@
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header styles */
+.header {
+  background: #33beff;
+  color: white;
+  padding: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .logo-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Updated logo size for better readability */
+.header .logo-container img {
+  height: 120px; /* Increased logo height */
+  margin-right: 15px;
+  width: auto;
+}
+
+.header .logo-text {
+  font-size: 2em; /* Increased text size */
+  font-weight: bold;
+}
+
+/* Updated header buttons styles for horizontal alignment */
+.header .buttons {
+  display: flex;
+  flex-direction: row; /* Buttons aligned horizontally */
+  justify-content: center;
+  align-items: center;
+  gap: 15px; /* Spacing between buttons */
+  /* Removed margin-right to center the buttons within the header */
+}
+
+.header .buttons button {
+  background: #5c7bf8;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  font-size: 16px;
+  width: auto; /* Override global button width */
+}
+
+.header .buttons button:hover {
+  background: #335bff;
+}
+
+/* Content area */
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Left-side logo */
+.logo-side {
+  margin-right: 20px;
+}
+
+.logo-side img {
+  width: 500px;
+  height: auto;
+}
+
+/* Map container */
+.map {
+  width: 1000px;
+  height: 500px;
+  background-color: #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Forms container */
+.container {
+  background-color: #fff;
+  border-radius: 8px;
+  width: 350px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+/* Form elements */
+.form-container h2 {
+  color: #007BFF;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: bold;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+/* Global Button styles (for other buttons on the site) */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Form text and links */
+.form-text {
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.form-text a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.form-text a:hover {
+  text-decoration: underline;
+}

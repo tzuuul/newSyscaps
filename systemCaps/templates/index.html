@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="header">
+    <div class="logo-container">
+      <img src="{{ url_for('static', filename='images/logo1.png') }}" alt="logo">
+      <div class="logo-text">Water Refilling Site</div>
+    </div>
+    <div class="buttons">
+      <button onclick="location.href='{{ url_for('transactions') }}'">My Transactions</button>
+      <button onclick="location.href='{{ url_for('cart') }}'">My Cart</button>
+      <button onclick="location.href='{{ url_for('notifications') }}'">🔔</button>
+      <button onclick="location.href='{{ url_for('logout') }}'">Logout</button>
+    </div>
+  </header>
+  <main class="content">
+    <div class="logo-side">
+      <img src="{{ url_for('static', filename='images/logo1.png') }}" alt="logo">
+    </div>
+    <div class="map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d30935.16024104058!2d121.3682504108398!3d14.259343600000014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x3397e3849f01fc1f%3A0xb59d2495fa701766!2s7C53%2BPP%20Naturral%20Water%20Refilling%20Station%2C%20Santa%20Cruz%2C%20Laguna!3m2!1d14.2593441!2d121.40429909999999!5e0!3m2!1sen!2sph!4v1739769954286!5m2!1sen!2sph" 
+              width="800" height="650" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </main>
+</body>
+</html>
